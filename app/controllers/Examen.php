@@ -60,12 +60,12 @@ class Examen extends BaseController
                 $date_formatted = date_format(date_create($examen->Datum), 'd-m-Y');
 
                 $tableRows .= "<tr>
-                                    <td>$examen->Voornaam</td>
-                                    <td>$examen->Datum</td>
-                                    <td>$examen->RijbewijsCategorie</td>
-                                    <td>$date_formatted</td>
+                                    <td>$examen->Id</td>
+                                    <td>$examen->StudentId</td>
                                     <td>$examen->Rijschool</td>
-                                    <td>$examen->Stad</td>            
+                                    <td>$examen->Stad</td>    
+                                    <td>$examen->RijbewijsCategorie</td>
+                                    <td>$date_formatted</td>        
                                     <td>$examen->Uitslag</td>
                             </tr>";
             }
