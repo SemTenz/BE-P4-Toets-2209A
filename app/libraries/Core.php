@@ -30,6 +30,9 @@
                 unset($url[1]);
                 // var_dump($url);
             }
+        } else {
+            // Handle the case when no specific method is provided
+            $this->currentMethod = 'index'; // Or any other default method name
         }
 
         
