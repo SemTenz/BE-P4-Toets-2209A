@@ -18,7 +18,7 @@ class examinatorModel
                       ,Rijschool
                       ,Stad
                       ,UitslagExamen
-                FROM  examinator, overzicht";
+                FROM  examinator, examen";
 
         $this->db->query($sql);
         return $this->db->resultSet();
