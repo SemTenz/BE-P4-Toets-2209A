@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 30 mei 2023 om 10:40
+-- Gegenereerd op: 30 mei 2023 om 10:57
 -- Serverversie: 5.7.36
 -- PHP-versie: 7.4.26
 
@@ -41,7 +41,14 @@ CREATE TABLE IF NOT EXISTS `examen` (
   `DatumGewijzigd` datetime(6) NOT NULL,
   `Opmerkingen` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `examen`
+--
+
+INSERT INTO `examen` (`Id`, `StudentId`, `Rijschool`, `Stad`, `Rijbewijscategorie`, `Datum`, `Uitslag`, `IsActief`, `DatumAangemaakt`, `DatumGewijzigd`, `Opmerkingen`) VALUES
+(1, 100234, 'VolGasVooruit', 'Rotterdam', 'B', '2023-03-04', 'Geslaagd', b'1', '2023-05-30 12:52:36.000000', '2023-05-30 12:52:36.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -81,7 +88,14 @@ CREATE TABLE IF NOT EXISTS `examinator` (
   `DatumAangemaakt` datetime(6) NOT NULL,
   `DatumGewijzigd` datetime(6) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `examinator`
+--
+
+INSERT INTO `examinator` (`Id`, `Voornaam`, `Tussenvoegsel`, `Achternaam`, `Mobiel`, `IsActief`, `Opmerkingen`, `DatumAangemaakt`, `DatumGewijzigd`) VALUES
+(1, 'Manuel', 'van', 'Meekeren', '06-28493823', b'1', NULL, '2023-05-30 12:54:37.000000', '2023-05-30 12:54:37.000000');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
