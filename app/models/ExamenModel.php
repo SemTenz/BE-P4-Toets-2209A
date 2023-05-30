@@ -58,12 +58,18 @@ class ExamenModel
 
     public function getExamenById($Id)
     {
-        $sql = "SELECT Voornaam
-                      ,Tussenvoegsel
-                      ,Achternaam
-                      ,DatumInDienst
-                      ,AantalSterren
-                FROM  Instructeur
+        $sql = "SELECT Id
+        ,StudentId
+        ,Rijschool
+        ,Stad
+        ,Rijbewijscategorie
+        ,Datum
+        ,Uitslag
+        ,IsActief
+        ,DatumAangemaakt
+        ,DatumGewijzigd
+        ,Opmerkingen
+        FROM  Examen
                 WHERE Id = $Id";
 
         $this->db->query($sql);

@@ -26,7 +26,7 @@ class Examen extends BaseController
                         <td>$formatted_date</td>            
                         <td>$examen->AantalSterren</td>            
                         <td>
-                            <a href='" . URLROOT . "/Examen/overzichtexamen/$examen->Id'>
+                            <a href='" . URLROOT . "/Examen/overzichtExamen/$examen->Id'>
                                 <i class='bi bi-car-front'></i>
                             </a>
                         </td>            
@@ -38,13 +38,13 @@ class Examen extends BaseController
             'rows' => $rows
         ];
 
-        $this->view('Examen/overzichtexamen', $data);
+        $this->view('Examen/overzichtExamen', $data);
     }
 
     public function overzichtExaminator($Id)
     {
         $examenInfo = $this->examenModel->getExamenById($Id);
-        $naam = $examenInfo->Voornaam . " " . $examenInfo->Tussenvoegsel . " " . $examenInfo->Achternaam;
+        $naam = $examenInfo->Voornaam . " " . $examenInfo->Datum . " " . $examenInfo->RijbewijsCategorie;
         $datumInDienst = $examenInfo->DatumInDienst;
         $aantalSterren = $examenInfo->AantalSterren;
 
@@ -53,7 +53,7 @@ class Examen extends BaseController
         $tableRows = "";
         if (empty($result)) {
             $tableRows = "<tr>
-                            <td colspan='6'>No assigned vehicles</td>
+                            <td colspan='6'>No assigned examinator</td>
                           </tr>";
         } else {
             foreach ($result as $examen) {
@@ -72,7 +72,7 @@ class Examen extends BaseController
         }
         
         $data = [
-            'title' => '',
+            'title' => 'Examen',
             'tableRows' => $tableRows,
             'naam' => $naam,
             'datumInDienst' => $datumInDienst,
