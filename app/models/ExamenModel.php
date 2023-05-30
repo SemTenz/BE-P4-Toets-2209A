@@ -1,6 +1,6 @@
 <?php
 
-class ExaminatorModel
+class ExamenModel
 {
     private $db;
 
@@ -9,23 +9,27 @@ class ExaminatorModel
         $this->db = new Database();
     }
 
-    public function getExaminator()
+    public function getExamen()
     {
         $sql = "SELECT Id
-                      ,Voornaam
-                      ,Tussenvoegsel
-                      ,Achternaam
-                      ,Mobiel
-                      ,DatumInDienst
-                      ,AantalSterren
-                FROM  Instructeur
-                ORDER BY AantalSterren DESC";
+                      ,StudentId
+                      ,Rijschool
+                      ,Stad
+                      ,Rijbewijscategorie
+                      ,Datum
+                      ,Uitslag
+                      ,IsActief
+                      ,DatumAangemaakt
+                      ,DatumGewijzigd
+                      ,Opmerkingen
+                FROM  Examen
+                ORDER BY StudentId DESC";
 
         $this->db->query($sql);
         return $this->db->resultSet();
     }
 
-    public function getToegewezenExamen($Id)
+    public function getToegewezenExaminator($Id)
     {
         $sql = "SELECT       VOER.Type
                             ,VOER.Kenteken
@@ -34,15 +38,15 @@ class ExaminatorModel
                             ,TYVO.TypeVoertuig
                             ,TYVO.RijbewijsCategorie
 
-                FROM        Voertuig    AS  VOER
+                FROM        Examinator    AS  EXAMi
                 
-                INNER JOIN  TypeVoertuig AS TYVO
+                INNER JOIN  Rijschool AS Rijs
 
-                ON          TYVO.Id = VOER.TypeVoertuigId
+                ON          Rijs.Id = EXAMI.ExaminatorId
                 
-                INNER JOIN  VoertuigInstructeur AS VOIN
+                INNER JOIN  Examen AS exam
                 
-                ON          VOIN.VoertuigId = VOER.Id
+                ON          exam.Examen.Id = EXAMI.id
                 
                 WHERE       VOIN.InstructeurId = $Id
                 
@@ -52,7 +56,7 @@ class ExaminatorModel
         return $this->db->resultSet();
     }
 
-    public function getExaminatorById($Id)
+    public function getExamenById($Id)
     {
         $sql = "SELECT Voornaam
                       ,Tussenvoegsel
